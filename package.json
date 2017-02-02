@@ -1,0 +1,30 @@
+{
+  "name": "vue-masonry",
+  "version": "0.9.0",
+  "description": "masonry layout for vue.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shershen08/vue-masonry.git"
+  },
+  "dependencies": {
+    "vue": "^2.0.0",
+    "masonry": "latest",
+    "imagesloaded": "latest"
+  },
+  "keywords": [
+    "masonry",
+    "layout",
+    "vue",
+    "vue.js"
+  ],
+  "author": "Mikhail Kuznetcov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shershen08/vue-masonry/issues"
+  },
+  "homepage": "https://github.com/shershen08/vue-masonry#readme"
+}
