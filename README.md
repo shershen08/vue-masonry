@@ -19,13 +19,13 @@ Vue.js directive for masonry blocks layouting. Original [masonry library](http:/
 
 
 
-Properties available same as on the [original masonry plugin](http://masonry.desandro.com/options.html):
+Properties currently available reproduce most of those on the [original masonry plugin](http://masonry.desandro.com/options.html):
 
  - ```item-selector=".item"``` - list element DOM item selector;
- - ```transition-duration="0.3s``` - duration of transition;
- - ```column-width="#test"``` - elemtn selector for column width;
- 
-
+ - ```transition-duration="0.3s``` - duration of transitions;
+ - ```column-width="#test"``` - element selector for column width;
+ - ```origin-left="false"``` - set to group elements to the right instead of left by default
+ - ```origin-top="false"``` - set to group elements to the bottom instead of top by default
 
 
 ### License

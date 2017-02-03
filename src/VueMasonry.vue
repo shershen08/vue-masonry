@@ -3,32 +3,39 @@
     const attributesMap = {
         'column-width': 'columnWidth',
         'transition-duration': 'transitionDuration',
-        'item-selector': 'itemSelector'
+        'item-selector': 'itemSelector',
+        'origin-left': 'originLeft',
+        'origin-top': 'originTop'
     };
-    const delay = 500;
+    const DELAY = 500;
     const EVENT_ADD = 'vuemasonry.itemAdded';
     const EVENT_REMOVE = 'vuemasonry.itemRemoved';
+
+    const stringToBool = ( val ) => ( val + '' ).toLowerCase() === 'true';
+
+    const collectOptions = ( attrs ) => {
+        let res = {};
+        let attrsrray = Array.prototype.slice.call( attrs );
+        attrsrray.forEach( function ( attr ) {
+            if ( Object.keys( attributesMap ).indexOf( attr.name ) > -1 ) {
+                res[ attributesMap[ attr.name ] ] = ( attr.name.indexOf( 'origin' ) > -1 ) ? stringToBool( attr.value ) : attr.value;
+            }
+        })
+        return res;
+    }
 
     var Events = new Vue( {});
 
     export const masonry = Vue.directive( 'masonry', {
         props: [ 'transitionDuration', ' itemSelector' ],
-        mounted: function () {
-            console.log( this )
-        },
+
         inserted: function ( el, nodeObj ) {
 
-            var options = {};
-            var attrsrray = Array.prototype.slice.call( el.attributes );
-
-            attrsrray.forEach( function ( attr ) {
-                if ( Object.keys( attributesMap ).indexOf( attr.name ) > -1 ) {
-                    options[ attributesMap[ attr.name ] ] = attr.value;
-                }
-            })
-            console.log(options);
-
-            var masonry = new Masonry( el, options );
+            if ( !Masonry ) {
+                throw new Error( 'Masonry plugin is not defined. Please check it\'s connected and parsed correctly.' );
+                return;
+            }
+            var masonry = new Masonry( el, collectOptions( el.attributes ) );
             var masonryDraw = () => {
                 masonry.reloadItems();
                 masonry.layout();
@@ -36,13 +43,10 @@
 
             setTimeout( function () {
                 masonryDraw()
-                //el.children( options.itemSelector ).css( 'visibility', 'visible' );
-            }, delay );
+            }, DELAY );
 
-            
             Events.$on( EVENT_ADD, function ( eventData ) {
                 masonryDraw()
-                
             })
             Events.$on( EVENT_REMOVE, function ( eventData ) {
                 masonryDraw()
@@ -54,7 +58,6 @@
 
         inserted: function ( el ) {
             Events.$emit( EVENT_ADD, { 'element': el });
-            //el.style.visibility = 'hidden';
         },
         beforeDestroy: function () {
             Events.$emit( EVENT_REMOVE, { 'element': el });
