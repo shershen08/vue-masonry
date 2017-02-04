@@ -27,6 +27,10 @@ Properties currently available reproduce most of those on the [original masonry 
  - ```origin-left="false"``` - set to group elements to the right instead of left by default
  - ```origin-top="false"``` - set to group elements to the bottom instead of top by default
 
+### TODOs
+
+ - implement Vue.nextTick() instead of setTimeout for initial rendering
+ - add support for imageLoad plugin for image-based layouts
 
 ### License
 
