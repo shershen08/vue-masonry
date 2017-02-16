@@ -2,6 +2,8 @@
 
 Vue.js directive for masonry blocks layouting. Original [masonry library](http://masonry.desandro.com/).
 
+Vue-masonry plugin [DEMO](https://shershen08.github.io/vue-plugins-demo-static/index.html#/masonry) available 🎉
+
 ## Install & Usage
 
  - Get from NPM:  ```npm install vue-masonry --save ```
