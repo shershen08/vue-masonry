@@ -6,7 +6,9 @@ Vue-masonry plugin [DEMO](https://shershen08.github.io/vue-plugins-demo-static/i
 
 ## Install & Usage
 
- - Get from NPM:  ```npm install vue-masonry --save ```
+ - Get from npm:  ```npm install vue-masonry --save ``` 
+ 
+    or from bower ```bower install vue-masonry```
  - Make sure that the masonry library is included, via ```<script async defer src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.0.0/masonry.pkgd.min.js"></script>``` or in other way.
  - Use in component code
     ```
