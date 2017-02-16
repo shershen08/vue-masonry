@@ -29,7 +29,7 @@ Properties currently available reproduce most of those on the [original masonry 
 
 ### TODOs
 
- - implement Vue.nextTick() instead of setTimeout for initial rendering
+ - <s>implement Vue.nextTick() instead of setTimeout for initial rendering</s>
  - add support for imageLoad plugin for image-based layouts
 
 ### License

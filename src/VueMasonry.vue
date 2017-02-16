@@ -7,7 +7,6 @@
         'origin-left': 'originLeft',
         'origin-top': 'originTop'
     };
-    const DELAY = 500;
     const EVENT_ADD = 'vuemasonry.itemAdded';
     const EVENT_REMOVE = 'vuemasonry.itemRemoved';
 
@@ -40,10 +39,9 @@
                 masonry.reloadItems();
                 masonry.layout();
             }
-
-            setTimeout( function () {
+            Vue.nextTick(function () {
                 masonryDraw()
-            }, DELAY );
+            });
 
             Events.$on( EVENT_ADD, function ( eventData ) {
                 masonryDraw()
