@@ -1,4 +1,6 @@
  import Vue from 'vue'
+ import Masonry from 'masonry-layout';
+
  const attributesMap = {
    'column-width': 'columnWidth',
    'transition-duration': 'transitionDuration',
