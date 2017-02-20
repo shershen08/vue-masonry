@@ -13,9 +13,10 @@
     "url": "git+https://github.com/shershen08/vue-masonry.git"
   },
   "dependencies": {
-    "vue": "^2.0.0",
+    "imagesloaded": "latest",
     "masonry": "latest",
-    "imagesloaded": "latest"
+    "masonry-layout": "4.1.1",
+    "vue": "^2.0.0"
   },
   "keywords": [
     "masonry",
