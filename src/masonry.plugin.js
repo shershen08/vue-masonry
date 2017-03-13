@@ -1,5 +1,6 @@
  import Vue from 'vue'
  import Masonry from 'masonry-layout';
+ import ImageLoaded from 'imagesloaded';
 
  const attributesMap = {
    'column-width': 'columnWidth',
@@ -10,6 +11,7 @@
  }
  const EVENT_ADD = 'vuemasonry.itemAdded'
  const EVENT_REMOVE = 'vuemasonry.itemRemoved'
+ const EVENT_IMAGE_LOADED = 'vuemasonry.imageLoaded'
 
  const stringToBool = (val) => (val + '').toLowerCase() === 'true'
 
@@ -48,6 +50,9 @@
      Events.$on(EVENT_REMOVE, function (eventData) {
        masonryDraw()
      })
+     Events.$on(EVENT_IMAGE_LOADED, function (eventData) {
+       masonryDraw()
+     })
    }
  })
 
@@ -55,6 +60,10 @@
 
    inserted: function (el) {
      Events.$emit(EVENT_ADD, { 'element': el })
+
+     new ImageLoaded(el, function () {
+       Events.$emit(EVENT_IMAGE_LOADED, { 'element': el })
+     })
    },
    beforeDestroy: function (el) {
      Events.$emit(EVENT_REMOVE, { 'element': el })
