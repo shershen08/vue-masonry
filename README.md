@@ -2,21 +2,25 @@
 
 Vue.js directive for masonry blocks layouting. Original [masonry library](http://masonry.desandro.com/).
 
-Vue-masonry plugin [DEMO](https://shershen08.github.io/vue-plugins-demo-static/index.html#/masonry) available 🎉
+Plugin [DEMO](https://shershen08.github.io/vue-plugins-demo-static/index.html#/masonry) available 🎉
+
+
+![DEPENDENCIES status](https://david-dm.org/shershen08/vue-masonry/status.svg)
+
 
 ## Install & Usage
 
  - Get from npm:  ```npm install vue-masonry --save ``` 
  
     or from bower ```bower install vue-masonry```
- - Make sure that the masonry library is included, via ```<script async defer src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.0.0/masonry.pkgd.min.js"></script>``` or in other way.
+ - Make sure that the masonry library is included; for example using cdn link: ```<script async defer src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.0.0/masonry.pkgd.min.js"></script>``` or in other convenient way.
  - Use in component code
     ```
     import {masonry, masonryTile} from 'vue-masonry';
 
     <div v-masonry transition-duration="0.3s" item-selector=".item">
         <div v-masonry-tile class="item" v-for="(item, index) in blocks">
-           //some item markup
+           <!-- block item markup -->
         </div>
     </div>
     ```
@@ -34,7 +38,8 @@ Properties currently available reproduce most of those on the [original masonry 
 ### TODOs
 
  - <s>implement Vue.nextTick() instead of setTimeout for initial rendering</s>
- - add support for imageLoad plugin for image-based layouts
+ - <s>add support for imageLoad plugin for image-based layouts</s>
+ - implement other useful original plugin options
 
 ### License
 
