@@ -16,7 +16,10 @@ Plugin [DEMO](https://shershen08.github.io/vue-plugins-demo-static/index.html#/m
  - Make sure that the masonry library is included; for example using cdn link: ```<script async defer src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.0.0/masonry.pkgd.min.js"></script>``` or in other convenient way.
  - Use in component code
     ```
-    import {masonry, masonryTile} from 'vue-masonry';
+    import Vue from 'vue'
+    import VueMasonryPlugin from 'vue-masonry';
+
+    Vue.use(VueMasonryPlugin)
 
     <div v-masonry transition-duration="0.3s" item-selector=".item">
         <div v-masonry-tile class="item" v-for="(item, index) in blocks">
@@ -24,7 +27,6 @@ Plugin [DEMO](https://shershen08.github.io/vue-plugins-demo-static/index.html#/m
         </div>
     </div>
     ```
-
 
 
 Properties currently available reproduce most of those on the [original masonry plugin](http://masonry.desandro.com/options.html):
@@ -35,11 +37,9 @@ Properties currently available reproduce most of those on the [original masonry 
  - ```origin-left="false"``` - set to group elements to the right instead of left by default
  - ```origin-top="false"``` - set to group elements to the bottom instead of top by default
 
-### TODOs
 
- - <s>implement Vue.nextTick() instead of setTimeout for initial rendering</s>
- - <s>add support for imageLoad plugin for image-based layouts</s>
- - implement other useful original plugin options
+💡 **New** 💡 : If you need to manually trgiger masonry layout redraw (for example in case if your tile elements amount or content has changed) you can now use `Vue.redrawVueMasonry()` method.
+
 
 ### License
 

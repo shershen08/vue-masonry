@@ -28,7 +28,16 @@
 
  var Events = new Vue({})
 
- export const masonry = Vue.directive('masonry', {
+export var VueMasonryPlugin = function() {}
+
+VueMasonryPlugin.install = function (Vue, options) {
+	var pluginWideMasonryRef;
+  
+  Vue.redrawVueMasonry = function () {
+    pluginWideMasonryRef()
+  };
+
+  Vue.directive('masonry', {
    props: [ 'transitionDuration', ' itemSelector' ],
 
    inserted: function (el, nodeObj) {
@@ -56,7 +65,7 @@
    }
  })
 
- export const masonryTile = Vue.directive('masonryTile', {
+ Vue.directive('masonryTile', {
 
    inserted: function (el) {
      Events.$emit(EVENT_ADD, { 'element': el })
@@ -69,3 +78,5 @@
      Events.$emit(EVENT_REMOVE, { 'element': el })
    }
  })
+
+}

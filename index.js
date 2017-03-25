@@ -1,5 +1,5 @@
-import VueMasonry from './src/VueMasonry.vue';
+import {VueMasonryPlugin} from './src/VueMasonry.vue';
 
-export default VueMasonry;
+export default VueMasonryPlugin;
 
-export { VueMasonry };
+export { VueMasonryPlugin };
