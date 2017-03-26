@@ -42,26 +42,26 @@
 
      inserted: function (el, nodeObj) {
        if (!Masonry) {
-        throw new Error('Masonry plugin is not defined. Please check it\'s connected and parsed correctly.')
-      }
+         throw new Error('Masonry plugin is not defined. Please check it\'s connected and parsed correctly.')
+       }
        var masonry = new Masonry(el, collectOptions(el.attributes))
        var masonryDraw = () => {
-        masonry.reloadItems()
-        masonry.layout()
-      }
+         masonry.reloadItems()
+         masonry.layout()
+       }
        Vue.nextTick(function () {
-        masonryDraw()
-      })
+         masonryDraw()
+       })
 
        Events.$on(EVENT_ADD, function (eventData) {
-        masonryDraw()
-      })
+         masonryDraw()
+       })
        Events.$on(EVENT_REMOVE, function (eventData) {
-        masonryDraw()
-      })
+         masonryDraw()
+       })
        Events.$on(EVENT_IMAGE_LOADED, function (eventData) {
-        masonryDraw()
-      })
+         masonryDraw()
+       })
      }
    })
 
