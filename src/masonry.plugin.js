@@ -1,6 +1,6 @@
  import Vue from 'vue'
- import Masonry from 'masonry-layout';
- import ImageLoaded from 'imagesloaded';
+ import Masonry from 'masonry-layout'
+ import ImageLoaded from 'imagesloaded'
 
  const attributesMap = {
    'column-width': 'columnWidth',
@@ -28,55 +28,54 @@
 
  var Events = new Vue({})
 
-export var VueMasonryPlugin = function() {}
+ export var VueMasonryPlugin = function () {}
 
-VueMasonryPlugin.install = function (Vue, options) {
-	var pluginWideMasonryRef;
-  
-  Vue.redrawVueMasonry = function () {
-    pluginWideMasonryRef()
-  };
+ VueMasonryPlugin.install = function (Vue, options) {
+   var pluginWideMasonryRef
 
-  Vue.directive('masonry', {
-   props: [ 'transitionDuration', ' itemSelector' ],
-
-   inserted: function (el, nodeObj) {
-     if (!Masonry) {
-       throw new Error('Masonry plugin is not defined. Please check it\'s connected and parsed correctly.')
-     }
-     var masonry = new Masonry(el, collectOptions(el.attributes))
-     var masonryDraw = () => {
-       masonry.reloadItems()
-       masonry.layout()
-     }
-     Vue.nextTick(function () {
-       masonryDraw()
-     })
-
-     Events.$on(EVENT_ADD, function (eventData) {
-       masonryDraw()
-     })
-     Events.$on(EVENT_REMOVE, function (eventData) {
-       masonryDraw()
-     })
-     Events.$on(EVENT_IMAGE_LOADED, function (eventData) {
-       masonryDraw()
-     })
+   Vue.redrawVueMasonry = function () {
+     pluginWideMasonryRef()
    }
- })
 
- Vue.directive('masonryTile', {
+   Vue.directive('masonry', {
+     props: [ 'transitionDuration', ' itemSelector' ],
 
-   inserted: function (el) {
-     Events.$emit(EVENT_ADD, { 'element': el })
+     inserted: function (el, nodeObj) {
+       if (!Masonry) {
+        throw new Error('Masonry plugin is not defined. Please check it\'s connected and parsed correctly.')
+      }
+       var masonry = new Masonry(el, collectOptions(el.attributes))
+       var masonryDraw = () => {
+        masonry.reloadItems()
+        masonry.layout()
+      }
+       Vue.nextTick(function () {
+        masonryDraw()
+      })
 
-     new ImageLoaded(el, function () {
-       Events.$emit(EVENT_IMAGE_LOADED, { 'element': el })
-     })
-   },
-   beforeDestroy: function (el) {
-     Events.$emit(EVENT_REMOVE, { 'element': el })
-   }
- })
+       Events.$on(EVENT_ADD, function (eventData) {
+        masonryDraw()
+      })
+       Events.$on(EVENT_REMOVE, function (eventData) {
+        masonryDraw()
+      })
+       Events.$on(EVENT_IMAGE_LOADED, function (eventData) {
+        masonryDraw()
+      })
+     }
+   })
 
-}
+   Vue.directive('masonryTile', {
+
+     inserted: function (el) {
+       Events.$emit(EVENT_ADD, { 'element': el })
+
+       new ImageLoaded(el, function () {
+         Events.$emit(EVENT_IMAGE_LOADED, { 'element': el })
+       })
+     },
+     beforeDestroy: function (el) {
+       Events.$emit(EVENT_REMOVE, { 'element': el })
+     }
+   })
+ }
