@@ -31,10 +31,9 @@
  export var VueMasonryPlugin = function () {}
 
  VueMasonryPlugin.install = function (Vue, options) {
-   var pluginWideMasonryRef
 
    Vue.redrawVueMasonry = function () {
-     pluginWideMasonryRef()
+     Events.$emit(EVENT_ADD)
    }
 
    Vue.directive('masonry', {
