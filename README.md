@@ -40,6 +40,11 @@ Properties currently available reproduce most of those on the [original masonry 
 
 💡 **New** 💡 : If you need to manually trgiger masonry layout redraw (for example in case if your tile elements amount or content has changed) you can now use `Vue.redrawVueMasonry()` method.
 
+### Questions, bugs
+
+ - Check the [original masonry library docs](https://masonry.desandro.com/options.html)
+ - Create [an issue](https://github.com/shershen08/vue-masonry/issues) or ping me on twitter [@legkoletat](https://twitter.com/legkoletat)
+
 
 ### License
 
