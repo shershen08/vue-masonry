@@ -36,6 +36,7 @@ Properties currently available reproduce most of those on the [original masonry 
  - ```column-width="#test"``` - element selector for column width;
  - ```origin-left="false"``` - set to group elements to the right instead of left by default
  - ```origin-top="false"``` - set to group elements to the bottom instead of top by default
+ - ```stamp=".stamp"``` - specifies which elements are stamped within the layout
 
 
 💡 **New** 💡 : If you need to manually trgiger masonry layout redraw (for example in case if your tile elements amount or content has changed) you can now use `Vue.redrawVueMasonry()` method.
