@@ -37,6 +37,7 @@ Properties currently available reproduce most of those on the [original masonry 
  - ```origin-left="false"``` - set to group elements to the right instead of left by default
  - ```origin-top="false"``` - set to group elements to the bottom instead of top by default
  - ```stamp=".stamp"``` - specifies which elements are stamped within the layout
+ - ```gutter="10"``` - specifies [horizontal space between item elements](https://masonry.desandro.com/options.html#gutter).
 
 
 💡 **New** 💡 : If you need to manually trgiger masonry layout redraw (for example in case if your tile elements amount or content has changed) you can now use `Vue.redrawVueMasonry()` method.

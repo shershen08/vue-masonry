@@ -8,7 +8,8 @@
    'item-selector': 'itemSelector',
    'origin-left': 'originLeft',
    'origin-top': 'originTop',
-   'stamp': 'stamp'
+   'stamp': 'stamp',
+   'gutter': 'gutter'
  }
  const EVENT_ADD = 'vuemasonry.itemAdded'
  const EVENT_REMOVE = 'vuemasonry.itemRemoved'
@@ -18,8 +19,8 @@
 
  const collectOptions = (attrs) => {
    let res = {}
-   let attrsrray = Array.prototype.slice.call(attrs)
-   attrsrray.forEach(function (attr) {
+   let attributesArray = Array.prototype.slice.call(attrs)
+   attributesArray.forEach((attr) => {
      if (Object.keys(attributesMap).indexOf(attr.name) > -1) {
        res[ attributesMap[ attr.name ] ] = (attr.name.indexOf('origin') > -1) ? stringToBool(attr.value) : attr.value
      }
