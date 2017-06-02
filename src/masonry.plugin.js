@@ -7,7 +7,8 @@
    'transition-duration': 'transitionDuration',
    'item-selector': 'itemSelector',
    'origin-left': 'originLeft',
-   'origin-top': 'originTop'
+   'origin-top': 'originTop',
+   'stamp': 'stamp'
  }
  const EVENT_ADD = 'vuemasonry.itemAdded'
  const EVENT_REMOVE = 'vuemasonry.itemRemoved'
