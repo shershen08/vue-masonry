@@ -15,12 +15,12 @@
  const EVENT_REMOVE = 'vuemasonry.itemRemoved'
  const EVENT_IMAGE_LOADED = 'vuemasonry.imageLoaded'
 
- const stringToBool = (val) => (val + '').toLowerCase() === 'true'
+ const stringToBool = val => (val + '').toLowerCase() === 'true'
 
- const collectOptions = (attrs) => {
+ const collectOptions = attrs => {
    let res = {}
    let attributesArray = Array.prototype.slice.call(attrs)
-   attributesArray.forEach((attr) => {
+   attributesArray.forEach(attr => {
      if (Object.keys(attributesMap).indexOf(attr.name) > -1) {
        res[ attributesMap[ attr.name ] ] = (attr.name.indexOf('origin') > -1) ? stringToBool(attr.value) : attr.value
      }
