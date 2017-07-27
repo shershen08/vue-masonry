@@ -8,6 +8,7 @@
    'item-selector': 'itemSelector',
    'origin-left': 'originLeft',
    'origin-top': 'originTop',
+   'fit-width': 'fitWidth',
    'stamp': 'stamp',
    'gutter': 'gutter'
  }
