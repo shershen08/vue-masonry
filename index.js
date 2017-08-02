@@ -1,4 +1,4 @@
-import {VueMasonryPlugin} from './src/VueMasonry.vue'
+import {VueMasonryPlugin} from './src/masonry.plugin.js'
 
 export default VueMasonryPlugin
 
