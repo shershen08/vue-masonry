@@ -4,6 +4,8 @@ Vue.js directive for masonry blocks layouting. Original [masonry library](http:/
 
 Plugin [DEMO](https://shershen08.github.io/vue-plugins-demo-static/index.html#/masonry) available 🎉
 
+You can also clone the basic demo repository [vue-masonry + vue-cli webpack](https://github.com/shershen08/vue-masonry-plugin-demo).
+
 
 ![DEPENDENCIES status](https://david-dm.org/shershen08/vue-masonry/status.svg)
 
