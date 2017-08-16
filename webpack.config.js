@@ -1,6 +1,9 @@
 const UglifyEsPlugin = require('uglify-es-webpack-plugin');
 const webpack = require('webpack');
 
+const libraryName = 'vueMasonry';
+const outputFile = libraryName + '.js';
+
 module.exports = {
      entry: './index.js',
           output: {
@@ -17,6 +20,13 @@ module.exports = {
             }
          }]
      },
+     output: {
+        path: __dirname + '/dist',
+        filename: outputFile,
+        library: libraryName,
+        libraryTarget: 'umd',
+        umdNamedDefine: true
+    },
     plugins: [
         new UglifyEsPlugin(),
         new webpack.BannerPlugin({
