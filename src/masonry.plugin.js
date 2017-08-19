@@ -35,10 +35,6 @@ export const VueMasonryPlugin = function () {}
 
 VueMasonryPlugin.install = function (Vue, options) {
 
-  Vue.redrawVueMasonry = function () {
-    Events.$emit(EVENT_ADD)
-  }
-
   Vue.directive('masonry', {
     props: ['transitionDuration', ' itemSelector'],
 
@@ -86,4 +82,8 @@ VueMasonryPlugin.install = function (Vue, options) {
       })
     }
   })
+
+  Vue.prototype.$redrawVueMasonry = function () {
+    Events.$emit(EVENT_ADD)
+  }
 }
