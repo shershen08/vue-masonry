@@ -19,7 +19,7 @@ You can also clone the basic demo repository [vue-masonry + vue-cli webpack](htt
  - Use in component code
     ```
     import Vue from 'vue'
-    import VueMasonryPlugin from 'vue-masonry';
+    import {VueMasonryPlugin} from 'vue-masonry';
 
     Vue.use(VueMasonryPlugin)
 
