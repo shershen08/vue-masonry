@@ -10,6 +10,21 @@ You can also clone the basic demo repository [vue-masonry + vue-cli webpack](htt
 ![DEPENDENCIES status](https://david-dm.org/shershen08/vue-masonry/status.svg)
 
 
+⚠️⚠️ **Minor API change** ⚠️⚠️
+
+If you suddenly see error: `Uncaught TypeError: _vue2.default.redrawVueMasonry is not a function` - please upgrade your usage of the plugin's method `redrawVueMasonry` in component methods from 
+
+```
+Vue.redrawVueMasonry()
+```
+to 
+```
+this.$redrawVueMasonry();
+``` 
+
+[More details in #31 issue](https://github.com/shershen08/vue-masonry/issues/31)
+
+
 ## Install & Usage
 
  - Get from npm:  ```npm install vue-masonry --save ``` 
@@ -44,7 +59,7 @@ Properties currently available reproduce most of those on the [original masonry 
  - ```fit-width="true"``` - sets the width of the container to fit the available number of columns
 
 
-💡 **New** 💡 : If you need to manually trgiger masonry layout redraw (for example in case if your tile elements amount or content has changed) you can now use `Vue.redrawVueMasonry()` method.
+💡💡💡 If you need to manually trigger masonry layout redraw (for example in case if your tile elements amount or content has changed) you can now use `this.redrawVueMasonry()` method. (If you use **old version** `< 0.10.11` it can still be Vue.redrawVueMasonry(), but please consider to upgrade)
 
 ### Questions, bugs
 
