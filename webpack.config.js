@@ -1,7 +1,7 @@
 const UglifyEsPlugin = require('uglify-es-webpack-plugin');
 const webpack = require('webpack');
 
-const libraryName = 'vueMasonry';
+const libraryName = 'vue-masonry-plugin';
 const outputFile = libraryName + '.js';
 
 module.exports = {
