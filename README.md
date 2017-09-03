@@ -59,7 +59,7 @@ Properties currently available reproduce most of those on the [original masonry 
  - ```fit-width="true"``` - sets the width of the container to fit the available number of columns
 
 
-💡💡💡 If you need to manually trigger masonry layout redraw (for example in case if your tile elements amount or content has changed) you can now use `this.redrawVueMasonry()` method. (If you use **old version** `< 0.10.11` it can still be Vue.redrawVueMasonry(), but please consider to upgrade)
+💡💡💡 If you need to manually trigger masonry layout redraw (for example in case if your tile elements amount or content has changed) you can now use `this.$redrawVueMasonry()` method. (If you use **old version** `< 0.10.11` it can still be `Vue.redrawVueMasonry()`, but please consider to upgrade)
 
 ### Questions, bugs
 
