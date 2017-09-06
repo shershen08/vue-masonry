@@ -12,23 +12,23 @@ You can also clone the basic demo repository [vue-masonry + vue-cli webpack](htt
 
 ⚠️⚠️ **Minor API change** ⚠️⚠️
 
-If you suddenly see error: `Uncaught TypeError: _vue2.default.redrawVueMasonry is not a function` - please upgrade your usage of the plugin's method `redrawVueMasonry` in component methods from 
+If you suddenly see error: `Uncaught TypeError: _vue2.default.redrawVueMasonry is not a function` - please upgrade your usage of the plugin's method `redrawVueMasonry` in component methods from
 
 ```
 Vue.redrawVueMasonry()
 ```
-to 
+to
 ```
 this.$redrawVueMasonry();
-``` 
+```
 
 [More details in #31 issue](https://github.com/shershen08/vue-masonry/issues/31)
 
 
 ## Install & Usage
 
- - Get from npm:  ```npm install vue-masonry --save ``` 
- 
+ - Get from npm:  ```npm install vue-masonry --save ```
+
     or from bower ```bower install vue-masonry```
  - Make sure that the masonry library is included; for example using cdn link: ```<script async defer src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.0.0/masonry.pkgd.min.js"></script>``` or in other convenient way.
  - Use in component code
@@ -60,6 +60,58 @@ Properties currently available reproduce most of those on the [original masonry 
 
 
 💡💡💡 If you need to manually trigger masonry layout redraw (for example in case if your tile elements amount or content has changed) you can now use `this.$redrawVueMasonry()` method. (If you use **old version** `< 0.10.11` it can still be `Vue.redrawVueMasonry()`, but please consider to upgrade)
+
+
+### NUXT ssr implimentation
+
+The best way to impliment this is to use the [no-ssr plugin](https://github.com/egoist/vue-no-ssr).
+
+Create a file in your plugins folder called vue-masonry.js with the following contents:
+
+```
+import Vue from 'vue'
+import VueMasonryPlugin from 'vue-masonry'
+
+Vue.use(VueMasonryPlugin)
+```
+Add this plugin to you `nuxt.config.js`
+
+```
+  plugins: [
+    { src: '~/plugins/vue-masonry', ssr: false }
+  ]
+```
+
+(NB make sure ssr is set to false)
+
+Add no-ssr and the markup for your vue-masonry to a component:
+
+HTML:
+```
+    <no-ssr>
+      <div v-masonry transition-duration="3s" item-selector=".item" class="masonry-container">
+        <div v-masonry-tile class="item" :key="index" v-for="(item, index) in blocks">
+          <p>{{item}} - {{index}}</p>
+        </div>
+      </div>
+    </no-ssr>
+```
+
+JS:
+```
+  import NoSSR from 'vue-no-ssr'
+
+  export default {
+    components: {
+      'no-ssr': NoSSR
+    },
+    mounted () {
+      if (typeof this.$redrawVueMasonry === 'function') {
+        this.$redrawVueMasonry()
+      }
+    }
+  }
+```
 
 ### Questions, bugs
 
