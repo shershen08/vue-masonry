@@ -74,7 +74,7 @@ import VueMasonryPlugin from 'vue-masonry'
 
 Vue.use(VueMasonryPlugin)
 ```
-2. Add this plugin to you `nuxt.config.js`
+2. Add this plugin to your `nuxt.config.js`
 
 ```
   plugins: [
