@@ -66,7 +66,7 @@ Properties currently available reproduce most of those on the [original masonry 
 
 The best way to impliment this is to use the [no-ssr plugin](https://github.com/egoist/vue-no-ssr).
 
-Create a file in your plugins folder called vue-masonry.js with the following contents:
+1. Create a file in your plugins folder called vue-masonry.js with the following contents:
 
 ```
 import Vue from 'vue'
@@ -74,7 +74,7 @@ import VueMasonryPlugin from 'vue-masonry'
 
 Vue.use(VueMasonryPlugin)
 ```
-Add this plugin to you `nuxt.config.js`
+2. Add this plugin to you `nuxt.config.js`
 
 ```
   plugins: [
@@ -84,7 +84,7 @@ Add this plugin to you `nuxt.config.js`
 
 (NB make sure ssr is set to false)
 
-Add no-ssr and the markup for your vue-masonry to a component:
+3. Add no-ssr and the markup for your vue-masonry to a component:
 
 HTML:
 ```
