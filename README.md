@@ -113,6 +113,8 @@ JS:
   }
 ```
 
+An example implimentation of vue-masonry with nuxt ssr can be found here - https://github.com/richlloydmiles/example-vue-masonry-ssr
+
 ### Questions, bugs
 
  - Check the [original masonry library docs](https://masonry.desandro.com/options.html)
