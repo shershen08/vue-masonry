@@ -1,7 +1,7 @@
 {
   "name": "vue-masonry",
   "description": "masonry layout for vue.js",
-  "version": "0.10.13",
+  "version": "0.10.14",
   "main": "index.js",
   "authors": [
     "Mikhail Kuznetcov"

@@ -16,12 +16,12 @@ const EVENT_ADD = 'vuemasonry.itemAdded'
 const EVENT_REMOVE = 'vuemasonry.itemRemoved'
 const EVENT_IMAGE_LOADED = 'vuemasonry.imageLoaded'
 
-const stringToBool = val => (val + '').toLowerCase() === 'true'
+const stringToBool = function(val) { retrun (val + '').toLowerCase() === 'true'}
 
-const collectOptions = attrs => {
-  let res = {}
-  let attributesArray = Array.prototype.slice.call(attrs)
-  attributesArray.forEach(attr => {
+const collectOptions = function(attrs) {
+  var res = {};
+  var attributesArray = Array.prototype.slice.call(attrs)
+  attributesArray.forEach(function(attr) {
     if (Object.keys(attributesMap).indexOf(attr.name) > -1) {
       res[attributesMap[attr.name]] = (attr.name.indexOf('origin') > -1) ? stringToBool(attr.value) : attr.value
     }
@@ -43,7 +43,7 @@ VueMasonryPlugin.install = function (Vue, options) {
         throw new Error('Masonry plugin is not defined. Please check it\'s connected and parsed correctly.')
       }
       const masonry = new Masonry(el, collectOptions(el.attributes))
-      const masonryDraw = () => {
+      const masonryDraw = function() {
         masonry.reloadItems()
         masonry.layout()
       }
