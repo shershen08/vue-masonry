@@ -16,7 +16,7 @@ const EVENT_ADD = 'vuemasonry.itemAdded'
 const EVENT_REMOVE = 'vuemasonry.itemRemoved'
 const EVENT_IMAGE_LOADED = 'vuemasonry.imageLoaded'
 
-const stringToBool = function(val) { retrun (val + '').toLowerCase() === 'true'}
+const stringToBool = function(val) { return (val + '').toLowerCase() === 'true'}
 
 const collectOptions = function(attrs) {
   var res = {};
