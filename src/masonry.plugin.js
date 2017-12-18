@@ -15,13 +15,14 @@ const attributesMap = {
 const EVENT_ADD = 'vuemasonry.itemAdded'
 const EVENT_REMOVE = 'vuemasonry.itemRemoved'
 const EVENT_IMAGE_LOADED = 'vuemasonry.imageLoaded'
+const EVENT_DESTROY = 'vuemasonry.destroy'
 
-const stringToBool = function(val) { return (val + '').toLowerCase() === 'true'}
+const stringToBool = function (val) { return (val + '').toLowerCase() === 'true' }
 
-const collectOptions = function(attrs) {
-  var res = {};
+const collectOptions = function (attrs) {
+  var res = {}
   var attributesArray = Array.prototype.slice.call(attrs)
-  attributesArray.forEach(function(attr) {
+  attributesArray.forEach(function (attr) {
     if (Object.keys(attributesMap).indexOf(attr.name) > -1) {
       res[attributesMap[attr.name]] = (attr.name.indexOf('origin') > -1) ? stringToBool(attr.value) : attr.value
     }
@@ -34,7 +35,6 @@ const Events = new Vue({})
 export const VueMasonryPlugin = function () {}
 
 VueMasonryPlugin.install = function (Vue, options) {
-
   Vue.directive('masonry', {
     props: ['transitionDuration', ' itemSelector'],
 
@@ -43,7 +43,7 @@ VueMasonryPlugin.install = function (Vue, options) {
         throw new Error('Masonry plugin is not defined. Please check it\'s connected and parsed correctly.')
       }
       const masonry = new Masonry(el, collectOptions(el.attributes))
-      const masonryDraw = function() {
+      const masonryDraw = function () {
         masonry.reloadItems()
         masonry.layout()
       }
@@ -60,6 +60,12 @@ VueMasonryPlugin.install = function (Vue, options) {
       Events.$on(EVENT_IMAGE_LOADED, function (eventData) {
         masonryDraw()
       })
+      Events.$on(EVENT_DESTROY, function (eventData) {
+        masonry.destroy()
+      })
+    },
+    unbind: function (el, nodeObj) {
+      Events.$emit(EVENT_DESTROY)
     }
   })
 
@@ -69,7 +75,7 @@ VueMasonryPlugin.install = function (Vue, options) {
       Events.$emit(EVENT_ADD, {
         'element': el
       })
-
+      // eslint-disable-next-line
       new ImageLoaded(el, function () {
         Events.$emit(EVENT_IMAGE_LOADED, {
           'element': el
