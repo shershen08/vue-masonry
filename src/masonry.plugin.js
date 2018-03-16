@@ -1,4 +1,3 @@
-import Vue from 'vue'
 import Masonry from 'masonry-layout'
 import ImageLoaded from 'imagesloaded'
 
@@ -31,11 +30,12 @@ const collectOptions = function (attrs) {
   return res
 }
 
-const Events = new Vue({})
-
 export const VueMasonryPlugin = function () {}
 
 VueMasonryPlugin.install = function (Vue, options) {
+
+  const Events = new Vue({})
+
   Vue.directive('masonry', {
     props: ['transitionDuration', ' itemSelector'],
 
