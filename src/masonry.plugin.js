@@ -10,7 +10,8 @@ const attributesMap = {
   'fit-width': 'fitWidth',
   'stamp': 'stamp',
   'gutter': 'gutter',
-  'percent-position': 'percentPosition'
+  'percent-position': 'percentPosition',
+  'horizontal-order': 'horizontalOrder'
 }
 const EVENT_ADD = 'vuemasonry.itemAdded'
 const EVENT_REMOVE = 'vuemasonry.itemRemoved'

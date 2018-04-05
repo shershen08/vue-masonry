@@ -16,7 +16,7 @@
   "dependencies": {
     "imagesloaded": "latest",
     "masonry": "latest",
-    "masonry-layout": "4.1.1",
+    "masonry-layout": "4.2.0",
     "vue": "^2.0.0"
   },
   "keywords": [

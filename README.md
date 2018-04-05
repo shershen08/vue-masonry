@@ -57,6 +57,7 @@ Properties currently available reproduce most of those on the [original masonry 
  - ```gutter=".gutter-block-selector"``` - specifies [horizontal space between item elements]
  (https://masonry.desandro.com/options.html#gutter). Set gutter to an Element or Selector String to use the outer width of the element.
  - ```fit-width="true"``` - sets the width of the container to fit the available number of columns
+ - ```horizontal-order="true"``` - lays out items to (mostly) maintain horizontal left-to-right order
 
 
 💡💡💡 If you need to manually trigger masonry layout redraw (for example in case if your tile elements amount or content has changed) you can now use `this.$redrawVueMasonry()` method. (If you use **old version** `< 0.10.11` it can still be `Vue.redrawVueMasonry()`, but please consider to upgrade)
