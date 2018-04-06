@@ -1,4 +1,6 @@
-# vue-masonry
+# vue-masonry 
+
+**Current version: 0.11.1**
 
 Vue.js directive for masonry blocks layouting. Original [masonry library](http://masonry.desandro.com/).
 
@@ -8,22 +10,6 @@ You can also clone the basic demo repository [vue-masonry + vue-cli webpack](htt
 
 
 ![DEPENDENCIES status](https://david-dm.org/shershen08/vue-masonry/status.svg)
-
-
-⚠️⚠️ **Minor API change** ⚠️⚠️
-
-If you suddenly see error: `Uncaught TypeError: _vue2.default.redrawVueMasonry is not a function` - please upgrade your usage of the plugin's method `redrawVueMasonry` in component methods from
-
-```
-Vue.redrawVueMasonry()
-```
-to
-```
-this.$redrawVueMasonry();
-```
-
-[More details in #31 issue](https://github.com/shershen08/vue-masonry/issues/31)
-
 
 ## Install & Usage
 
@@ -116,10 +102,18 @@ JS:
 
 An example implimentation of vue-masonry with nuxt ssr can be found here - https://github.com/richlloydmiles/example-vue-masonry-ssr
 
+### Contributing
+
+Thanks to all the [contributors](https://github.com/shershen08/vue-masonry/graphs/contributors) for making the plugin better!
+
 ### Questions, bugs
 
  - Check the [original masonry library docs](https://masonry.desandro.com/options.html)
  - Create [an issue](https://github.com/shershen08/vue-masonry/issues) or ping me on twitter [@legkoletat](https://twitter.com/legkoletat)
+
+### Known issues
+
+ - Minor API change (JAN 2018). If you suddenly see error: `Uncaught TypeError: _vue2.default.redrawVueMasonry is not a function` - please upgrade your usage of the plugin's method `redrawVueMasonry` in component methods from ```Vue.redrawVueMasonry()``` to ```this.$redrawVueMasonry();```. See [more details in #31 issue](https://github.com/shershen08/vue-masonry/issues/31)
 
 
 ### License
