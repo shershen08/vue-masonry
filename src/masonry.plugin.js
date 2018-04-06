@@ -34,7 +34,6 @@ const collectOptions = function (attrs) {
 export const VueMasonryPlugin = function () {}
 
 VueMasonryPlugin.install = function (Vue, options) {
-
   const Events = new Vue({})
 
   Vue.directive('masonry', {
@@ -53,18 +52,22 @@ VueMasonryPlugin.install = function (Vue, options) {
         masonryDraw()
       })
 
-      Events.$on(EVENT_ADD, function (eventData) {
+      const masonryRedrawHandler = function (eventData) {
         masonryDraw()
-      })
-      Events.$on(EVENT_REMOVE, function (eventData) {
-        masonryDraw()
-      })
-      Events.$on(EVENT_IMAGE_LOADED, function (eventData) {
-        masonryDraw()
-      })
-      Events.$on(EVENT_DESTROY, function (eventData) {
+      }
+
+      const masonryDestroyHandler = function (eventData) {
+        Events.$off(EVENT_ADD, masonryRedrawHandler)
+        Events.$off(EVENT_REMOVE, masonryRedrawHandler)
+        Events.$off(EVENT_IMAGE_LOADED, masonryRedrawHandler)
+        Events.$off(EVENT_DESTROY, masonryDestroyHandler)
         masonry.destroy()
-      })
+      }
+
+      Events.$on(EVENT_ADD, masonryRedrawHandler)
+      Events.$on(EVENT_REMOVE, masonryRedrawHandler)
+      Events.$on(EVENT_IMAGE_LOADED, masonryRedrawHandler)
+      Events.$on(EVENT_DESTROY, masonryDestroyHandler)
     },
     unbind: function (el, nodeObj) {
       Events.$emit(EVENT_DESTROY)
