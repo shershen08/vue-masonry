@@ -57,7 +57,7 @@ The best way to impliment this is to use the [no-ssr plugin](https://github.com/
 
 ```
 import Vue from 'vue'
-import VueMasonryPlugin from 'vue-masonry'
+import {VueMasonryPlugin} from 'vue-masonry'
 
 Vue.use(VueMasonryPlugin)
 ```
