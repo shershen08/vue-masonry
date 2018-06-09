@@ -1,8 +1,9 @@
 {
   "name": "vue-masonry",
-  "version": "0.11.2",
+  "version": "0.11.3",
   "description": "masonry layout for vue.js",
   "main": "src/masonry.plugin.js",
+  "browser": "dist/vue-masonry-plugin-window.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "watch-http-server -s -p 8888",

@@ -2,7 +2,8 @@ const UglifyEsPlugin = require('uglify-es-webpack-plugin');
 const webpack = require('webpack');
 
 const libraryName = 'vue-masonry-plugin';
-const outputFile = libraryName + '.js';
+const buildTarget = process.env.TARGET === 'umd' ? 'umd' : 'window';
+const outputFile = `${libraryName}-${buildTarget}.js`;
 
 module.exports = {
      entry: './index.js',
@@ -24,7 +25,7 @@ module.exports = {
         path: __dirname + '/dist',
         filename: outputFile,
         library: libraryName,
-        libraryTarget: 'umd',
+        libraryTarget: buildTarget,
         umdNamedDefine: true
     },
     plugins: [
