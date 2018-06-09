@@ -1,6 +1,6 @@
 # vue-masonry 
 
-**Current version: 0.11.2**
+**Current version: 0.11.3**
 
 Vue.js directive for masonry blocks layouting. Original [masonry library](http://masonry.desandro.com/).
 
@@ -20,7 +20,12 @@ You can also clone the basic demo repository [vue-masonry + vue-cli webpack](htt
  - Use in component code
     ```
     import Vue from 'vue'
+    
+    // import es6 style
     import {VueMasonryPlugin} from 'vue-masonry';
+    
+    // or using CJS 
+    // const VueMasonryPlugin = require('vue-masonry').VueMasonryPlugin
 
     Vue.use(VueMasonryPlugin)
 
@@ -31,6 +36,19 @@ You can also clone the basic demo repository [vue-masonry + vue-cli webpack](htt
     </div>
     ```
 
+### Usage directly in the browser
+
+Since v 0.11.3 in-browser usage is available using a direct script inclusion on the page like so:
+
+```
+<script src="https://unpkg.com/vue-masonry@0.11.3/dist/vue-masonry-plugin-window.js"></script>
+```
+
+
+```
+var VueMasonryPlugin = window["vue-masonry-plugin"]
+Vue.use(VueMasonryPlugin)
+```
 
 Properties currently available reproduce most of those on the [original masonry plugin](http://masonry.desandro.com/options.html):
 
