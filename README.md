@@ -8,22 +8,28 @@ Plugin [DEMO](https://shershen08.github.io/vue-plugins-demo-static/index.html#/m
 
 You can also clone the basic demo repository [vue-masonry + vue-cli webpack](https://github.com/shershen08/vue-masonry-plugin-demo).
 
-
 ![DEPENDENCIES status](https://david-dm.org/shershen08/vue-masonry/status.svg)
 
-## Install & Usage
+## Usage
 
- - Get from npm:  ```npm install vue-masonry --save ```
+### Install via NPM
+
+- Get from npm:  ```npm install vue-masonry --save ```
 
     or from bower ```bower install vue-masonry```
- - Make sure that the masonry library is included; for example using cdn link: ```<script async defer src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.0.0/masonry.pkgd.min.js"></script>``` or in other convenient way.
- - Use in component code
+- Make sure that the masonry library is included; for example using cdn link: ```<script async defer src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.0.0/masonry.pkgd.min.js"></script>``` or in other convenient way.
+
+
+### Usage with build tools
+
+- In your Vue app you'll have the following code:
+
     ```
     import Vue from 'vue'
-    
-    // import es6 style
+
+    // import ES6 style
     import {VueMasonryPlugin} from 'vue-masonry';
-    
+
     // or using CJS 
     // const VueMasonryPlugin = require('vue-masonry').VueMasonryPlugin
 
@@ -44,13 +50,14 @@ Since v 0.11.3 in-browser usage is available using a direct script inclusion on 
 <script src="https://unpkg.com/vue-masonry@0.11.3/dist/vue-masonry-plugin-window.js"></script>
 ```
 
-
 ```
-var VueMasonryPlugin = window["vue-masonry-plugin"]
+var VueMasonryPlugin = window["vue-masonry-plugin"].VueMasonryPlugin
 Vue.use(VueMasonryPlugin)
 ```
 
-Properties currently available reproduce most of those on the [original masonry plugin](http://masonry.desandro.com/options.html):
+### Properties
+
+Properties that are currently available reproduce most of those on the [original masonry plugin](http://masonry.desandro.com/options.html):
 
  - ```item-selector=".item"``` - list element DOM item selector;
  - ```transition-duration="0.3s``` - duration of transitions;
@@ -132,7 +139,6 @@ Thanks to all the [contributors](https://github.com/shershen08/vue-masonry/graph
 ### Known issues
 
  - Minor API change (JAN 2018). If you suddenly see error: `Uncaught TypeError: _vue2.default.redrawVueMasonry is not a function` - please upgrade your usage of the plugin's method `redrawVueMasonry` in component methods from ```Vue.redrawVueMasonry()``` to ```this.$redrawVueMasonry();```. See [more details in #31 issue](https://github.com/shershen08/vue-masonry/issues/31)
-
 
 ### License
 
