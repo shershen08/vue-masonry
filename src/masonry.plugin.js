@@ -11,7 +11,8 @@ const attributesMap = {
   'stamp': 'stamp',
   'gutter': 'gutter',
   'percent-position': 'percentPosition',
-  'horizontal-order': 'horizontalOrder'
+  'horizontal-order': 'horizontalOrder',
+  'stagger': 'stagger'
 }
 const EVENT_ADD = 'vuemasonry.itemAdded'
 const EVENT_REMOVE = 'vuemasonry.itemRemoved'
