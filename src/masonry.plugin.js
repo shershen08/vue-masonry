@@ -21,12 +21,20 @@ const EVENT_DESTROY = 'vuemasonry.destroy'
 
 const stringToBool = function (val) { return (val + '').toLowerCase() === 'true' }
 
+const numberOrSelector = function (val) { return isNaN(val) ? val : parseInt(val) }
+
 const collectOptions = function (attrs) {
   var res = {}
   var attributesArray = Array.prototype.slice.call(attrs)
   attributesArray.forEach(function (attr) {
     if (Object.keys(attributesMap).indexOf(attr.name) > -1) {
-      res[attributesMap[attr.name]] = (attr.name.indexOf('origin') > -1) ? stringToBool(attr.value) : attr.value
+      if (attr.name.indexOf('origin') > -1) {
+        res[attributesMap[attr.name]] = stringToBool(attr.value)
+      } else if (attr.name === 'column-width' || attr.name === 'gutter') {
+        res[attributesMap[attr.name]] = numberOrSelector(attr.value)
+      } else {
+        res[attributesMap[attr.name]] = attr.value
+      }
     }
   })
   return res
