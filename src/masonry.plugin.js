@@ -88,7 +88,7 @@ VueMasonryPlugin.install = function (Vue, options) {
         })
       })
     },
-    beforeDestroy: function (el) {
+    unbind: function (el) {
       Events.$emit(EVENT_REMOVE, {
         'element': el
       })
