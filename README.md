@@ -61,15 +61,15 @@ Properties that are currently available reproduce most of those on the [original
 
  - ```item-selector=".item"``` - list element DOM item selector;
  - ```transition-duration="0.3s``` - duration of transitions;
- - ```column-width="#test"``` - element selector for column width;
- - ```origin-left="false"``` - set to group elements to the right instead of left by default
- - ```origin-top="false"``` - set to group elements to the bottom instead of top by default
- - ```stamp=".stamp"``` - specifies which elements are stamped within the layout
- - ```gutter=".gutter-block-selector"``` - specifies [horizontal space between item elements]
- (https://masonry.desandro.com/options.html#gutter). Set gutter to an Element or Selector String to use the outer width of the element.
- - ```fit-width="true"``` - sets the width of the container to fit the available number of columns
- - ```horizontal-order="true"``` - lays out items to (mostly) maintain horizontal left-to-right order
- - ```stagger="0.03s"``` - Staggers item transitions, so items transition incrementally after one another. Set as a CSS time format, '0.03s', or as a number in milliseconds, 30
+ - ```column-width="#test"``` - element selector for column width. Can be a selector string or a number;
+ - ```origin-left="false"``` - set to group elements to the right instead of left by default;
+ - ```origin-top="false"``` - set to group elements to the bottom instead of top by default;
+ - ```stamp=".stamp"``` - specifies which elements are stamped within the layout;
+ - ```gutter=".gutter-block-selector"``` - specifies [horizontal space between item elements]. Can be a selector string or a number.
+ (https://masonry.desandro.com/options.html#gutter). Set gutter to an Element or Selector String to use the outer width of the element;
+ - ```fit-width="true"``` - sets the width of the container to fit the available number of columns;
+ - ```horizontal-order="true"``` - lays out items to (mostly) maintain horizontal left-to-right order;
+ - ```stagger="0.03s"``` - Staggers item transitions, so items transition incrementally after one another. Set as a CSS time format, '0.03s', or as a number in milliseconds, 30.
 
 
 💡💡💡 If you need to manually trigger masonry layout redraw (for example in case if your tile elements amount or content has changed) you can now use `this.$redrawVueMasonry()` method. (If you use **old version** `< 0.10.11` it can still be `Vue.redrawVueMasonry()`, but please consider to upgrade)
