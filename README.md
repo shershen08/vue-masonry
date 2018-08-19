@@ -1,6 +1,6 @@
 # vue-masonry 
 
-**Current version: 0.11.5**
+**Current version: 0.11.6**
 
 Vue.js directive for masonry blocks layouting. Original [masonry library](http://masonry.desandro.com/).
 
