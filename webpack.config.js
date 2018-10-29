@@ -28,7 +28,13 @@ module.exports = {
   },
   mode: 'production',
   optimization: {
-    minimizer: [new UglifyJsPlugin()]
+    minimizer: [
+      new UglifyJsPlugin({
+        uglifyOptions: {
+          output: {comments: false}
+        }
+      })
+    ]
   },
   plugins: [
     new webpack.BannerPlugin({
