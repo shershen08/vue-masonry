@@ -4,6 +4,7 @@ const webpack = require('webpack')
 const libraryName = 'vue-masonry-plugin'
 const buildTarget = process.env.TARGET === 'umd' ? 'umd' : 'window'
 const outputFile = `${libraryName}-${buildTarget}.js`
+const tagline = 'Vue.js plugin for Masonry layouts'
 
 module.exports = {
   entry: './index.js',
@@ -31,14 +32,14 @@ module.exports = {
     minimizer: [
       new UglifyJsPlugin({
         uglifyOptions: {
-          output: {comments: false}
+          output: {comments: new RegExp(tagline, 'i')}
         }
       })
     ]
   },
   plugins: [
     new webpack.BannerPlugin({
-      banner: 'Vue.js plugin for Masonry layouts \n https://github.com/shershen08/vue-masonry/ \n file:[file]'
+      banner: `${tagline} \n https://github.com/shershen08/vue-masonry/ \n file:[file]`
     })
   ]
 }
