@@ -76,7 +76,7 @@ Properties that are currently available reproduce most of those on the [original
 💡💡💡 If you need to manually trigger masonry layout redraw (for example in case if your tile elements amount or content has changed) you can now use `this.$redrawVueMasonry()` method. (If you use **old version** `< 0.10.11` it can still be `Vue.redrawVueMasonry()`, but please consider to upgrade)
 
 
-### NUXT ssr implimentation
+### NUXT ssr implementation
 
 The best way to impliment this is to use the [no-ssr plugin](https://github.com/egoist/vue-no-ssr).
 
