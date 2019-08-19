@@ -3,7 +3,7 @@
 ![DEPENDENCIES status](https://david-dm.org/shershen08/vue-masonry/status.svg)
 [![](https://data.jsdelivr.com/v1/package/npm/vue-masonry/badge)](https://www.jsdelivr.com/package/npm/vue-masonry)
 
-**Current version: 0.11.7**
+**Current version: 0.11.8**
 
 Vue.js directive for masonry blocks layouting. Original [masonry library](http://masonry.desandro.com/).
 
@@ -36,7 +36,7 @@ You can also clone the basic demo repository [vue-masonry + vue-cli webpack](htt
 
     Vue.use(VueMasonryPlugin)
 
-    <div v-masonry transition-duration="0.3s" item-selector=".item">
+    <div v-masonry="containerId" transition-duration="0.3s" item-selector=".item">
         <div v-masonry-tile class="item" v-for="(item, index) in blocks">
            <!-- block item markup -->
         </div>
@@ -72,8 +72,9 @@ Properties that are currently available reproduce most of those on the [original
  - ```horizontal-order="true"``` - lays out items to (mostly) maintain horizontal left-to-right order;
  - ```stagger="0.03s"``` - Staggers item transitions, so items transition incrementally after one another. Set as a CSS time format, '0.03s', or as a number in milliseconds, 30.
 
+If you need to manually trigger masonry layout redraw (for example in case if your tile elements amount or content has changed) you can now use `this.$redrawVueMasonry('containerId')` method. As of [0.11.8](https://github.com/shershen08/vue-masonry/pull/89) your can pass id of the block where you want to trigger the redraw.
 
-💡💡💡 If you need to manually trigger masonry layout redraw (for example in case if your tile elements amount or content has changed) you can now use `this.$redrawVueMasonry()` method. (If you use **old version** `< 0.10.11` it can still be `Vue.redrawVueMasonry()`, but please consider to upgrade)
+(If you use **old version** `< 0.10.11` it can still be `Vue.redrawVueMasonry()`, but please consider to upgrade)
 
 
 ### NUXT ssr implementation
