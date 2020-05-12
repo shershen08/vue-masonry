@@ -73,6 +73,7 @@ Properties that are currently available reproduce most of those on the [original
  - ```fit-width="true"``` - sets the width of the container to fit the available number of columns;
  - ```horizontal-order="true"``` - lays out items to (mostly) maintain horizontal left-to-right order;
  - ```stagger="0.03s"``` - Staggers item transitions, so items transition incrementally after one another. Set as a CSS time format, '0.03s', or as a number in milliseconds, 30.
+ - ```destroy-delay="0"``` - Amount of time (in milliseconds) to wait before unloading masonry via ```masonry.destroy()``` when the container is destroyed. This is useful during page/route transitions to ensure the layout is consistent while the transition takes place.
 
 If you need to manually trigger masonry layout redraw (for example in case if your tile elements amount or content has changed) you can now use `this.$redrawVueMasonry('containerId')` method. As of [0.11.8](https://github.com/shershen08/vue-masonry/pull/89) your can pass id of the block where you want to trigger the redraw.
 

@@ -12,7 +12,8 @@ const attributesMap = {
   'gutter': 'gutter',
   'percent-position': 'percentPosition',
   'horizontal-order': 'horizontalOrder',
-  'stagger': 'stagger'
+  'stagger': 'stagger',
+  'destroy-delay': 'destroyDelay'
 }
 const EVENT_ADD = 'vuemasonry.itemAdded'
 const EVENT_REMOVE = 'vuemasonry.itemRemoved'
@@ -47,14 +48,16 @@ VueMasonryPlugin.install = function (Vue, options) {
   const defaultId = 'VueMasonry'
 
   Vue.directive('masonry', {
-    props: ['transitionDuration', ' itemSelector'],
+    props: ['transitionDuration', ' itemSelector', 'destroyDelay'],
 
     inserted: function (el, binding) {
       if (!Masonry) {
         throw new Error('Masonry plugin is not defined. Please check it\'s connected and parsed correctly.')
       }
-      const masonry = new Masonry(el, collectOptions(el.attributes))
+      const options = collectOptions(el.attributes)
+      const masonry = new Masonry(el, options)
       const masonryId = binding.value || defaultId
+      const destroyDelay = options['destroyDelay'] ? parseInt(options['destroyDelay'], 10) : undefined
       const masonryDraw = function () {
         masonry.reloadItems()
         masonry.layout()
@@ -72,7 +75,10 @@ VueMasonryPlugin.install = function (Vue, options) {
         Events.$off(`${EVENT_REMOVE}__${masonryId}`, masonryRedrawHandler)
         Events.$off(`${EVENT_IMAGE_LOADED}__${masonryId}`, masonryRedrawHandler)
         Events.$off(`${EVENT_DESTROY}__${masonryId}`, masonryDestroyHandler)
-        masonry.destroy()
+        const delay = destroyDelay && !Number.isNaN(destroyDelay) ? destroyDelay : 0
+        setTimeout(function () {
+          masonry.destroy()
+        }, delay)
       }
 
       Events.$on(`${EVENT_ADD}__${masonryId}`, masonryRedrawHandler)
