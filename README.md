@@ -81,7 +81,7 @@ If you need to manually trigger masonry layout redraw (for example in case if yo
 
 ### NUXT ssr implementation
 
-The best way to impliment this is to use the [no-ssr plugin](https://github.com/egoist/vue-no-ssr).
+The best way to implement this is to use the [no-ssr plugin](https://github.com/egoist/vue-no-ssr).
 
 1. Create a file in your plugins folder called vue-masonry.js with the following contents:
 
@@ -130,7 +130,7 @@ JS:
   }
 ```
 
-An example implimentation of vue-masonry with nuxt ssr can be found here - https://github.com/richlloydmiles/example-vue-masonry-ssr
+An example implementation of vue-masonry with nuxt ssr can be found here - https://github.com/richlloydmiles/example-vue-masonry-ssr
 
 ### Contributing
 
