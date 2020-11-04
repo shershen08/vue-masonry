@@ -16,6 +16,9 @@
     "masonry-layout": "^4.2.2",
     "vue": "^2.0.0"
   },
+  "publishConfig": { 
+    "registry": "https://npm.pkg.github.com/" 
+  },
   "keywords": [
     "masonry",
     "layout",
