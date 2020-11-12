@@ -9,6 +9,8 @@ Vue.js directive for masonry blocks layouting. Original [masonry library](http:/
 
 Plugin [DEMO](https://shershen08.github.io/vue-plugins-demo-static/index.html#/masonry) available 🎉, [JSFiddle DEMO](https://jsfiddle.net/jericopulvera/wq07brjs)
 
+The plugin can be easily integrated with different CSS Frameworks. Check this [Tailwind CSS DEMO](https://jsbin.com/zafegay/edit?html,output).
+
 You can also clone the basic demo repository [vue-masonry + vue-cli webpack](https://github.com/shershen08/vue-masonry-plugin-demo).
 
 ## Usage
@@ -71,6 +73,7 @@ Properties that are currently available reproduce most of those on the [original
  - ```fit-width="true"``` - sets the width of the container to fit the available number of columns;
  - ```horizontal-order="true"``` - lays out items to (mostly) maintain horizontal left-to-right order;
  - ```stagger="0.03s"``` - Staggers item transitions, so items transition incrementally after one another. Set as a CSS time format, '0.03s', or as a number in milliseconds, 30.
+ - ```destroy-delay="0"``` - Amount of time (in milliseconds) to wait before unloading masonry via ```masonry.destroy()``` when the container is destroyed. This is useful during page/route transitions to ensure the layout is consistent while the transition takes place.
 
 If you need to manually trigger masonry layout redraw (for example in case if your tile elements amount or content has changed) you can now use `this.$redrawVueMasonry('containerId')` method. As of [0.11.8](https://github.com/shershen08/vue-masonry/pull/89) your can pass id of the block where you want to trigger the redraw.
 
@@ -79,7 +82,7 @@ If you need to manually trigger masonry layout redraw (for example in case if yo
 
 ### NUXT ssr implementation
 
-The best way to impliment this is to use the [no-ssr plugin](https://github.com/egoist/vue-no-ssr).
+The best way to implement this is to use the [no-ssr plugin](https://github.com/egoist/vue-no-ssr).
 
 1. Create a file in your plugins folder called vue-masonry.js with the following contents:
 
@@ -128,7 +131,7 @@ JS:
   }
 ```
 
-An example implimentation of vue-masonry with nuxt ssr can be found here - https://github.com/richlloydmiles/example-vue-masonry-ssr
+An example implementation of vue-masonry with nuxt ssr can be found here - https://github.com/richlloydmiles/example-vue-masonry-ssr
 
 ### Contributing
 
