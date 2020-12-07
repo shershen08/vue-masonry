@@ -3,11 +3,11 @@
 ![DEPENDENCIES status](https://david-dm.org/shershen08/vue-masonry/status.svg)
 [![](https://data.jsdelivr.com/v1/package/npm/vue-masonry/badge)](https://www.jsdelivr.com/package/npm/vue-masonry)
 
-**Current version: 0.11.8**
+**Current version: 0.12.0**
 
 Vue.js directive for masonry blocks layouting. Original [masonry library](http://masonry.desandro.com/).
 
-Plugin [DEMO](https://shershen08.github.io/vue-plugins-demo-static/index.html#/masonry) available 🎉, [JSFiddle DEMO](https://jsfiddle.net/jericopulvera/wq07brjs)
+Plugin [DEMO](https://shershen08.github.io/vue-plugins-demo-static/index.html#/masonry) available 🎉, [JSFiddle DEMO](https://jsfiddle.net/shershen08/n54039qg/)
 
 The plugin can be easily integrated with different CSS Frameworks. Check this [Tailwind CSS DEMO](https://jsbin.com/zafegay/edit?html,output).
 
