@@ -45,6 +45,29 @@ You can also clone the basic demo repository [vue-masonry + vue-cli webpack](htt
     </div>
     ```
 
+### Usage with Vue 3
+- Dependencies: [mitt](https://www.npmjs.com/package/mitt) package
+- In your Vue 3 app, you'll have the following code
+
+    ```
+    import { createApp } from 'vue'
+    import mitt from 'mitt'
+
+    import { VueMasonryPlugin } from "vue-masonry/src/masonry-vue3.plugin";
+
+    const emitter = mitt()
+    let app = createApp(App)
+    app.config.globalProperties.emitter = emitter
+    app.use(VueMasonryPlugin)
+    app.mount('#app')
+
+    <div v-masonry="containerId" transition-duration="0.3s" item-selector=".item">
+      <div v-masonry-tile class="item" v-for="(item, index) in blocks">
+        <!-- block item markup -->
+      </div>
+    </div>
+    ```
+
 ### Usage directly in the browser
 
 Since v 0.11.3 in-browser usage is available using a direct script inclusion on the page like so:
