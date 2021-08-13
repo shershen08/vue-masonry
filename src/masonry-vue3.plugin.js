@@ -2,7 +2,7 @@ import Masonry from 'masonry-layout'
 import ImageLoaded from 'imagesloaded'
 
 // Vue 3 Global API changed: nextTick import
-import { nextTick } from 'vue';
+import Vue from 'vue';
 
 const attributesMap = {
   'column-width': 'columnWidth',
@@ -69,7 +69,7 @@ export class VueMasonryPlugin {
         }
 
         // Updated nextTick method
-        nextTick(() => {
+        Vue.nextTick(() => {
           masonryDraw()
         })
 
