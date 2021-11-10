@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import Masonry from 'masonry-layout'
 import ImageLoaded from 'imagesloaded'
 

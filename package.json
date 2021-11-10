@@ -1,6 +1,6 @@
 {
   "name": "vue-masonry",
-  "version": "0.13.0",
+  "version": "0.14.0-beta.0",
   "description": "masonry layout for vue.js",
   "main": "src/masonry.plugin.js",
   "scripts": {
@@ -14,7 +14,17 @@
   "dependencies": {
     "imagesloaded": "4.1.4",
     "masonry-layout": "^4.2.2",
-    "vue": "^2.0.0"
+    "mitt": "^3.0.0",
+    "vue-demi": "^0.12.1"
+  },
+  "peerDependencies": {
+    "@vue/composition-api": "^1.0.0-rc.1",
+    "vue": "^2.0.0 || >=3.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@vue/composition-api": {
+      "optional": true
+    }
   },
   "keywords": [
     "masonry",
@@ -29,6 +39,7 @@
   },
   "homepage": "https://github.com/shershen08/vue-masonry#readme",
   "devDependencies": {
+    "vue": "^3.0.0",
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",
     "babel-eslint": "^10.0.1",

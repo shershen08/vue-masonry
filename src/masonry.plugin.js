@@ -1,5 +1,7 @@
 import Masonry from 'masonry-layout'
 import ImageLoaded from 'imagesloaded'
+import { isVue2, Vue2, nextTick } from 'vue-demi'
+import mitt from 'mitt'
 
 const attributesMap = {
   'column-width': 'columnWidth',
@@ -41,16 +43,18 @@ const collectOptions = function (attrs) {
   return res
 }
 
-export const VueMasonryPlugin = function () {}
+export const VueMasonryPlugin = {}
 
-VueMasonryPlugin.install = function (Vue, options) {
-  const Events = new Vue({})
+VueMasonryPlugin.install = function (app, options) {
+  const Events = isVue2 ? new Vue2() : mitt()
   const defaultId = 'VueMasonry'
 
-  Vue.directive('masonry', {
+  const appOrVue2 = (isVue2 ? Vue2 : app)
+
+  appOrVue2.directive('masonry', {
     props: ['transitionDuration', ' itemSelector', 'destroyDelay'],
 
-    inserted: function (el, binding) {
+    [isVue2 ? 'inserted' : 'mounted']: function (el, binding) {
       if (!Masonry) {
         throw new Error('Masonry plugin is not defined. Please check it\'s connected and parsed correctly.')
       }
@@ -62,60 +66,76 @@ VueMasonryPlugin.install = function (Vue, options) {
         masonry.reloadItems()
         masonry.layout()
       }
-      Vue.nextTick(function () {
-        masonryDraw()
-      })
+
+      if (isVue2) {
+        Vue2.nextTick(function () {
+          masonryDraw()
+        })
+      } else {
+        nextTick(() => {
+          masonryDraw()
+        })
+      }
 
       const masonryRedrawHandler = function (eventData) {
         masonryDraw()
       }
 
       const masonryDestroyHandler = function (eventData) {
-        Events.$off(`${EVENT_ADD}__${masonryId}`, masonryRedrawHandler)
-        Events.$off(`${EVENT_REMOVE}__${masonryId}`, masonryRedrawHandler)
-        Events.$off(`${EVENT_IMAGE_LOADED}__${masonryId}`, masonryRedrawHandler)
-        Events.$off(`${EVENT_DESTROY}__${masonryId}`, masonryDestroyHandler)
+        Events[`${isVue2 ? '$' : ''}off`](`${EVENT_ADD}__${masonryId}`, masonryRedrawHandler)
+        Events[`${isVue2 ? '$' : ''}off`](`${EVENT_REMOVE}__${masonryId}`, masonryRedrawHandler)
+        Events[`${isVue2 ? '$' : ''}off`](`${EVENT_IMAGE_LOADED}__${masonryId}`, masonryRedrawHandler)
+        Events[`${isVue2 ? '$' : ''}off`](`${EVENT_DESTROY}__${masonryId}`, masonryDestroyHandler)
         const delay = destroyDelay && !Number.isNaN(destroyDelay) ? destroyDelay : 0
         setTimeout(function () {
           masonry.destroy()
         }, delay)
       }
 
-      Events.$on(`${EVENT_ADD}__${masonryId}`, masonryRedrawHandler)
-      Events.$on(`${EVENT_REMOVE}__${masonryId}`, masonryRedrawHandler)
-      Events.$on(`${EVENT_IMAGE_LOADED}__${masonryId}`, masonryRedrawHandler)
-      Events.$on(`${EVENT_DESTROY}__${masonryId}`, masonryDestroyHandler)
+      Events[`${isVue2 ? '$' : ''}on`](`${EVENT_ADD}__${masonryId}`, masonryRedrawHandler)
+      Events[`${isVue2 ? '$' : ''}on`](`${EVENT_REMOVE}__${masonryId}`, masonryRedrawHandler)
+      Events[`${isVue2 ? '$' : ''}on`](`${EVENT_IMAGE_LOADED}__${masonryId}`, masonryRedrawHandler)
+      Events[`${isVue2 ? '$' : ''}on`](`${EVENT_DESTROY}__${masonryId}`, masonryDestroyHandler)
     },
     unbind: function (el, binding) {
       const masonryId = binding.value || defaultId
-      Events.$emit(`${EVENT_DESTROY}__${masonryId}`)
+      Events.emit(`${EVENT_DESTROY}__${masonryId}`)
     }
   })
 
-  Vue.directive('masonryTile', {
+  appOrVue2.directive('masonryTile', {
 
-    inserted: function (el, binding) {
+    [isVue2 ? 'inserted' : 'mounted']: function (el, binding) {
       const masonryId = binding.value || defaultId
-      Events.$emit(`${EVENT_ADD}__${masonryId}`, {
+      Events[`${isVue2 ? '$' : ''}emit`](`${EVENT_ADD}__${masonryId}`, {
         'element': el
       })
       // eslint-disable-next-line
       new ImageLoaded(el, function () {
-        Events.$emit(`${EVENT_IMAGE_LOADED}__${masonryId}`, {
+        Events[`${isVue2 ? '$' : ''}emit`](`${EVENT_IMAGE_LOADED}__${masonryId}`, {
           'element': el
         })
       })
     },
     unbind: function (el, binding) {
       const masonryId = binding.value || defaultId
-      Events.$emit(`${EVENT_REMOVE}__${masonryId}`, {
+      Events[`${isVue2 ? '$' : ''}emit`](`${EVENT_REMOVE}__${masonryId}`, {
         'element': el
       })
     }
   })
 
-  Vue.prototype.$redrawVueMasonry = function (id) {
-    const masonryId = id || defaultId
-    Events.$emit(`${EVENT_ADD}__${masonryId}`)
+  if (isVue2) {
+    Vue2.prototype.$redrawVueMasonry = function (id) {
+      const masonryId = id || defaultId
+      Events[`${isVue2 ? '$' : ''}emit`](`${EVENT_ADD}__${masonryId}`)
+    }
+  } else {
+    const redraw = function (id) {
+      const masonryId = id || defaultId
+      Events[`${isVue2 ? '$' : ''}emit`](`${EVENT_ADD}__${masonryId}`)
+    }
+    app.config.globalProperties.$redrawVueMasonry = redraw
+    app.provide('redrawVueMasonry', redraw)
   }
 }
