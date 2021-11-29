@@ -3,7 +3,7 @@
 ![DEPENDENCIES status](https://david-dm.org/shershen08/vue-masonry/status.svg)
 [![](https://data.jsdelivr.com/v1/package/npm/vue-masonry/badge)](https://www.jsdelivr.com/package/npm/vue-masonry)
 
-**Current version: 0.12.0**
+**Current version: 0.14.0**
 
 Vue.js directive for masonry blocks layouting. Original [masonry library](http://masonry.desandro.com/).
 
@@ -46,8 +46,12 @@ You can also clone the basic demo repository [vue-masonry + vue-cli webpack](htt
     ```
 
 ### Usage with Vue 3
-- Dependencies: [mitt](https://www.npmjs.com/package/mitt) package
-- In your Vue 3 app, you'll have the following code
+
+ - Use version >= `0.14.0` 
+
+ - or of using __earlier__ version:
+   Dependencies: [mitt](https://www.npmjs.com/package/mitt) package
+   In your Vue 3 app, you'll have the following code
 
     ```
     import { createApp } from 'vue'
