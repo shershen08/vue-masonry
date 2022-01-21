@@ -99,7 +99,7 @@ VueMasonryPlugin.install = function (app, options) {
     },
     unbind: function (el, binding) {
       const masonryId = binding.value || defaultId
-      Events.emit(`${EVENT_DESTROY}__${masonryId}`)
+      Events[`${isVue2 ? '$' : ''}emit`](`${EVENT_DESTROY}__${masonryId}`)
     }
   })
 
