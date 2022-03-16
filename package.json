@@ -1,11 +1,12 @@
 {
   "name": "vue-masonry",
-  "version": "0.14.1",
+  "version": "0.15.0",
   "description": "masonry layout for vue.js",
   "main": "src/masonry.plugin.js",
   "scripts": {
     "lint": "eslint --ext .js,.vue src",
-    "build": "webpack"
+    "build": "webpack",
+    "build-umd": "TARGET=umd webpack"
   },
   "repository": {
     "type": "git",
