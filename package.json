@@ -16,7 +16,7 @@
     "imagesloaded": "4.1.4",
     "masonry-layout": "^4.2.2",
     "mitt": "^3.0.0",
-    "vue-demi": "^0.12.1"
+    "vue-demi": "^0.13.2"
   },
   "peerDependencies": {
     "@vue/composition-api": "^1.0.0-rc.1",
