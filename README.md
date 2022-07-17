@@ -109,7 +109,7 @@ If you need to manually trigger masonry layout redraw (for example in case if yo
 
 ### NUXT ssr implementation
 
-The best way to implement this is to use the [no-ssr plugin](https://github.com/egoist/vue-no-ssr).
+The best way to implement this is to use the [vue-client-only plugin](https://github.com/egoist/vue-client-only). This project is previously known as `vue-no-ssr`.
 
 1. Create a file in your plugins folder called vue-masonry.js with the following contents:
 
@@ -129,26 +129,26 @@ Vue.use(VueMasonryPlugin)
 
 (NB make sure ssr is set to false)
 
-3. Add no-ssr and the markup for your vue-masonry to a component:
+3. Add `client-only` wrapper and the markup for your vue-masonry to a component:
 
 HTML:
 ```
-    <no-ssr>
+    <client-only>
       <div v-masonry transition-duration="3s" item-selector=".item" class="masonry-container">
         <div v-masonry-tile class="item" :key="index" v-for="(item, index) in blocks">
           <p>{{item}} - {{index}}</p>
         </div>
       </div>
-    </no-ssr>
+    </client-only>
 ```
 
 JS:
 ```
-  import NoSSR from 'vue-no-ssr'
+  import ClientOnly from 'vue-client-only'
 
   export default {
     components: {
-      'no-ssr': NoSSR
+      ClientOnly
     },
     mounted () {
       if (typeof this.$redrawVueMasonry === 'function') {
@@ -158,7 +158,7 @@ JS:
   }
 ```
 
-An example implementation of vue-masonry with nuxt ssr can be found here - https://github.com/richlloydmiles/example-vue-masonry-ssr
+An example implementation of vue-no-ssr old version + vue-masonry with nuxt can be found here - https://github.com/richlloydmiles/example-vue-masonry-ssr
 
 ### Contributing
 
