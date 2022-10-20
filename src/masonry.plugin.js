@@ -97,7 +97,7 @@ VueMasonryPlugin.install = function (app, options) {
       Events[`${isVue2 ? '$' : ''}on`](`${EVENT_IMAGE_LOADED}__${masonryId}`, masonryRedrawHandler)
       Events[`${isVue2 ? '$' : ''}on`](`${EVENT_DESTROY}__${masonryId}`, masonryDestroyHandler)
     },
-    unbind: function (el, binding) {
+    [isVue2 ? 'unbind' : 'unmounted']: function (el, binding) {
       const masonryId = binding.value || defaultId
       Events[`${isVue2 ? '$' : ''}emit`](`${EVENT_DESTROY}__${masonryId}`)
     }
@@ -117,7 +117,7 @@ VueMasonryPlugin.install = function (app, options) {
         })
       })
     },
-    unbind: function (el, binding) {
+    [isVue2 ? 'unbind' : 'unmounted']: function (el, binding) {
       const masonryId = binding.value || defaultId
       Events[`${isVue2 ? '$' : ''}emit`](`${EVENT_REMOVE}__${masonryId}`, {
         'element': el
