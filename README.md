@@ -57,14 +57,17 @@ You can also clone the basic demo repository [vue-masonry + vue-cli webpack](htt
     import { createApp } from 'vue'
     import mitt from 'mitt'
 
-    import { VueMasonryPlugin } from "vue-masonry/src/masonry-vue3.plugin";
+    import { VueMasonryPlugin } from "vue-masonry";
 
     const emitter = mitt()
     let app = createApp(App)
     app.config.globalProperties.emitter = emitter
     app.use(VueMasonryPlugin)
     app.mount('#app')
-
+    
+    const containerId = 42 // optional, if you need multiple containers on page
+    const blocks = [1,2,3,4,5,6]
+    
     <div v-masonry="containerId" transition-duration="0.3s" item-selector=".item">
       <div v-masonry-tile class="item" v-for="(item, index) in blocks">
         <!-- block item markup -->
